@@ -17,9 +17,13 @@ const getPollutionData = async () => {
 
         const resData = await response.json();
         const aqi = resData.data.current.pollution.aqius;
+        const temp = resData.data.current.weather.tp;
+        const icone = resData.data.current.weather.ic;
         const sortedData = {
             city: resData.data.city,
             aqi,
+            temp,
+            icone,
             ...pollutionScale.find(obj => aqi >= obj.scale[0] && aqi <= obj.scale[1])
         }
         populateUI(sortedData);
@@ -37,10 +41,15 @@ const pollutionValue = document.querySelector('#pollutionValue');
 const backgroundLayer = document.querySelector('#backgroundLayer');
 const locationPointer = document.querySelector('#locationPointer');
 
+const weatherLogo = document.querySelector('#weatherLogo');
+const temp = document.querySelector('#temperature');
+
 const populateUI = (data) => {
     emojiLogo.src = `../img/${data.src}.svg`;
     userInfo.textContent = `Air quality for ${data.city} :`;
     cityName.textContent = data.city;
+    temp.textContent = data.temp;
+    weatherLogo.style.backgroundImage = `url(../img/weatherIcons/${data.icone}.svg)`;
     pollutionInfo.textContent = data.quality;
     pollutionValue.textContent = data.aqi;
     backgroundLayer.style.backgroundImage = data.background;
