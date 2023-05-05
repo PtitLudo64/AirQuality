@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Roboto:wght@400;900&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
 * {
@@ -7,12 +6,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-/* 
-font-family: 'Inter', sans-serif;
-font-family: 'Roboto', sans-serif;
-font-family: 'Orbitron', sans-serif;
-*/
 
 body {
     min-height: 100vh;
@@ -45,7 +38,7 @@ body {
 h1 {
     font-family: 'Roboto', sans-serif;
     text-align: center;
-    font-size: 4.5rem;
+    font-size: clamp(2rem, 10vw, 4.5rem);
     margin-bottom: 50px;
     color: #f1f1f1;
     text-shadow: 1px 1px 5px #000;
@@ -55,7 +48,7 @@ h1 {
 .informationBlock {
     max-width: 500px;
     background-color: #f1f1f1;
-    margin: 0 auto;
+    margin: 0 auto 10px;
     border-radius: 5px;
     padding: 25px 25px 50px;
     position: relative;
@@ -78,8 +71,8 @@ h1 {
         visibility 0.6s ease-out;
 }
 #loader.active {
-    visibility: visible;
-    opacity: 1;
+    /* visibility: visible;
+    opacity: 1; */
 }
 .loaderLogo {
     width: 75px;
@@ -191,4 +184,22 @@ td {
 .scaleSection:nth-child(7) {
     flex-grow: 4;
     background-color: #800;
+}
+
+/* Search Location */
+
+#searchLocation {
+    padding: 25px;
+}
+#searchLocation #location {
+    width: 100%;
+    margin-top: 30px;
+    height: 2rem;
+    padding: 2px;
+}
+#searchLocation #searchEmoji {
+    position: absolute;
+    bottom: 27px;
+    right: 27px;
+    width: 1.8rem;
 }

@@ -22,7 +22,7 @@
             <p id="userInformation">Your city informations.</p>
 
             <div id="cityWeather">
-                <span id="cityName">City</span>
+                <!-- <span id="cityName">City</span> -->
                 <div id="weatherLogo"></div>
  
                 <div>
@@ -44,7 +44,6 @@
 
             <p class="scaleBarText">Pollution scale:</p>
             <div class="scaleContainer">
-                <!-- <img src="./img/location.svg" alt="Location pointer" class="locationPointer"> -->
                 <svg id="locationPointer" version="1.1" viewBox="0 0 200 200" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="m100.33 50.197c-19.1 0-34.6 15.502-34.6 34.602 0 6.3 1.7004 12.5 4.9004 17.6 1e-6 0.2 0.19846 0.59965 22.398 41.6 1.8 3.4 4.4012 5.1992 7.2012 5.1992 2.9 0 5.3988-1.7992 7.2988-5.1992 21-38.6 22.201-41 22.201-41 3.4-5.4 5.1992-11.699 5.1992-18.199 0-19.1-15.5-34.602-34.6-34.602zm0 17.102c10.6 0 19.1 8.5996 19.1 19.1 0 10.5-8.5996 19.199-19.1 19.199-10.6 0-19.1-8.5996-19.1-19.1 0-10.5 8.4996-19.199 19.1-19.199z"/></svg>
                 <div class="scaleSection"></div>
                 <div class="scaleSection"></div>
@@ -53,6 +52,11 @@
                 <div class="scaleSection"></div>
                 <div class="scaleSection"></div>
             </div>
+        </div>
+        <div class="informationBlock" id="searchLocation">
+            <h2>Search for a city :</h2>
+            <input type="text" name="location" id="location">
+            <img src="./img/magnifyingGlass.svg" alt="Looking for a location" id="searchEmoji">
         </div>
     </div>
 

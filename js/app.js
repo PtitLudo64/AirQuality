@@ -35,6 +35,7 @@ const getPollutionData = async () => {
     }
 };
 
+const title = document.querySelector('h1');
 const cityName = document.querySelector('#cityName');
 const pollutionInfo = document.querySelector('#pollutionInfo');
 const pollutionValue = document.querySelector('#pollutionValue');
@@ -45,9 +46,10 @@ const weatherLogo = document.querySelector('#weatherLogo');
 const temp = document.querySelector('#temperature');
 
 const populateUI = (data) => {
+    title.textContent = data.city + ' Air Quality.';
     emojiLogo.src = `../img/${data.src}.svg`;
     userInfo.textContent = `Air quality for ${data.city} :`;
-    cityName.textContent = data.city;
+    // cityName.textContent = data.city;
     temp.textContent = data.temp;
     weatherLogo.style.backgroundImage = `url(../img/weatherIcons/${data.icone}.svg)`;
     pollutionInfo.textContent = data.quality;
@@ -62,4 +64,4 @@ const pointerPlacement = (aqiValue) => {
     locationPointer.style.transform = `translateX(${(aqiValue / 500) * parentWidth}px) rotate(180deg)`
 };
 
-getPollutionData();
+// getPollutionData();
