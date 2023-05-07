@@ -1,0 +1,60 @@
+/* Search Location */
+
+#searchLocation {
+    padding: 25px;
+    position: relative;
+}
+#searchLocation form {
+    position: relative;
+}
+#searchLocation #location {
+    width: 100%;
+    margin-top: 30px;
+    height: 2rem;
+    padding: 2px;
+}
+#searchLocation #searchEmoji {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 1.8rem;
+    cursor: pointer;
+}
+
+#suggest {
+    padding: 5px 5px 0 5px;
+    width: 100%;
+    max-width: 500px;
+    position: absolute;
+    left: 0;
+    bottom: 2.1rem;
+    background-color: #f1f1f180;
+    backdrop-filter: blur(20px);
+}
+#suggest ul {
+    list-style: none;
+}
+
+#suggest li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+#suggest ul li:hover {
+    background-color: #eef;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+}
+#suggest ul li .countryName {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 0.7rem;
+    text-align: left;
+}
+#suggest ul li .cityName {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-align: right;
+}

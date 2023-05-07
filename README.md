@@ -14,3 +14,5 @@ https://api-docs.iqair.com/?version=latest#intro
 ## Get nearest city data (IP geolocation)
 http://api.airvisual.com/v2/nearest_city?key={{YOUR_API_KEY}}
 
+## Get nearest city data (GPS coordinates)
+http://api.airvisual.com/v2/nearest_city?lat={{LATITUDE}}&lon={{LONGITUDE}}&key={{YOUR_API_KEY}}

@@ -5,9 +5,24 @@ const loader = document.querySelector('#loader');
 const emojiLogo = document.querySelector('#emojiLogo');
 const userInfo = document.querySelector('#userInformation');
 
-const getPollutionData = async () => {
+
+
+const reqIP = `http://api.airvisual.com/v2/nearest_city?key=${API_KEY}`;
+let reqGPS;
+
+
+const buildReqGPS = (coords) => {
+    reqGPS = `http://api.airvisual.com/v2/nearest_city?lat=${coords[0]}&lon=${coords[1]}&key=${API_KEY}`;
+    getPollutionData(reqGPS);
+};
+
+export default buildReqGPS;
+
+const getPollutionData = async (req) => {
+    req == 'reqIP' ? reqIP : reqGPS;
+
     try {
-        const response = await fetch(`http://api.airvisual.com/v2/nearest_city?key=${API_KEY}`).catch(err => {
+        const response = await fetch(req == 'reqIP' ? reqIP : reqGPS).catch(err => {
             throw new Error(err);
         });
 
@@ -15,12 +30,12 @@ const getPollutionData = async () => {
             throw new Error(`Error ${response.status}, ${response.statusText}`);
         }
 
-        const resData = await response.json();
-        const aqi = resData.data.current.pollution.aqius;
-        const temp = resData.data.current.weather.tp;
-        const icone = resData.data.current.weather.ic;
+        const respData = await response.json();
+        const aqi = respData.data.current.pollution.aqius;
+        const temp = respData.data.current.weather.tp;
+        const icone = respData.data.current.weather.ic;
         const sortedData = {
-            city: resData.data.city,
+            city: respData.data.city,
             aqi,
             temp,
             icone,
@@ -64,4 +79,4 @@ const pointerPlacement = (aqiValue) => {
     locationPointer.style.transform = `translateX(${(aqiValue / 500) * parentWidth}px) rotate(180deg)`
 };
 
-// getPollutionData();
+getPollutionData('reqIP');

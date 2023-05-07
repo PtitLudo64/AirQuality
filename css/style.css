@@ -185,21 +185,3 @@ td {
     flex-grow: 4;
     background-color: #800;
 }
-
-/* Search Location */
-
-#searchLocation {
-    padding: 25px;
-}
-#searchLocation #location {
-    width: 100%;
-    margin-top: 30px;
-    height: 2rem;
-    padding: 2px;
-}
-#searchLocation #searchEmoji {
-    position: absolute;
-    bottom: 27px;
-    right: 27px;
-    width: 1.8rem;
-}

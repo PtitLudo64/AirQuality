@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Air Quality App</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/search.css">
 </head>
 <body>
 
@@ -55,11 +56,16 @@
         </div>
         <div class="informationBlock" id="searchLocation">
             <h2>Search for a city :</h2>
-            <input type="text" name="location" id="location">
-            <img src="./img/magnifyingGlass.svg" alt="Looking for a location" id="searchEmoji">
+            <form autocomplete="off">
+                <input type="text" name="location" id="location">
+                <img src="./img/magnifyingGlass.svg" alt="Looking for a location" id="searchEmoji">
+                <div id="suggest"></div>
+            </form>
         </div>
     </div>
 
     <script type="module" src="js/app.js"></script>
+    <script src="js/xmlToJSON.js"></script>
+    <script type="module" src="js/citySearch.js"></script>
 </body>
 </html>
