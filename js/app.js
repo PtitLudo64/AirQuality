@@ -19,8 +19,6 @@ const buildReqGPS = (coords) => {
 export default buildReqGPS;
 
 const getPollutionData = async (req) => {
-    req == 'reqIP' ? reqIP : reqGPS;
-
     try {
         const response = await fetch(req == 'reqIP' ? reqIP : reqGPS).catch(err => {
             throw new Error(err);
