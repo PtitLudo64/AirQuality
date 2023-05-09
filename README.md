@@ -16,3 +16,10 @@ http://api.airvisual.com/v2/nearest_city?key={{YOUR_API_KEY}}
 
 ## Get nearest city data (GPS coordinates)
 http://api.airvisual.com/v2/nearest_city?lat={{LATITUDE}}&lon={{LONGITUDE}}&key={{YOUR_API_KEY}}
+
+## Geoapify Location Platform documentation
+https://apidocs.geoapify.com/
+
+## Geoapify My Project log in
+https://myprojects.geoapify.com/login
+

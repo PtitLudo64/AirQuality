@@ -31,28 +31,20 @@
     background-color: #f1f1f180;
     backdrop-filter: blur(20px);
 }
-#suggest ul {
-    list-style: none;
-}
-
-#suggest li {
-    width: 100%;
+#suggest .autocomplete {
     display: flex;
-    justify-content: space-between;
-    align-items: end;
+    align-items: flex-end;
 }
-#suggest ul li:hover {
-    background-color: #eef;
-    border-bottom: 1px solid #000;
+#suggest .autocomplete:hover {
     cursor: pointer;
+    background-color: #ffeeee;
 }
-#suggest ul li .countryName {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 500;
-    font-size: 0.7rem;
-    text-align: left;
+#suggest .autocomplete .suggestIcon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
 }
-#suggest ul li .cityName {
+#suggest .autocomplete .cityName {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 400;
     font-size: 0.9rem;

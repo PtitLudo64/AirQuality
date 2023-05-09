@@ -3,6 +3,8 @@ import buildReqGPS from "./app.js";
 
 class City {
     constructor() {
+        this.formated,
+        this.category,
         this.name,
         this.country,
         this.lng,
@@ -17,20 +19,20 @@ let coords = [];
 const updateSuggest = (data) => {
     coords = [];
     const divSuggest = document.querySelector('#suggest');
-    let chaine = '<ul>';
+    let chaine = '';
 
     data.forEach(elt => {
-        chaine += '<li><span class="cityName">' +
-            elt.name.slice(0, 40) +
-            '</span><span class="countryName">' +
-            elt.country +
-            '</span></li>';
+        if (elt.name != undefined) {
+            chaine += '<div class="autocomplete">' + 
+                        '<span class="suggestIcon">';
+            elt.category == 'site' ? chaine+='<img src="img/location.svg" />' : chaine+='<img src="img/building.svg" />';
+            chaine+='</span><span class="cityName">' + elt.formated.slice(0, 40) + '</span></div>';
+        }
     });
 
-    chaine += '</ul>';
     suggest.innerHTML = chaine;
 
-    let suggestCitiesList = suggest.querySelectorAll('li');
+    let suggestCitiesList = suggest.querySelectorAll('.autocomplete');
     suggestCitiesList.forEach((elt, idx) => elt.addEventListener('click', (e) => {
         document.querySelector('#location').value = data[idx].name + ' (' + data[idx].country +
             ')';
@@ -47,23 +49,31 @@ const searchAPI = async (key) => {
         console.log('-> Validé');
     else {
         let chaine = key.target.value;
-        if (chaine.length >= 2) {
+        if (chaine.length > 2) {
 
             try {
                 const result = await fetch(
-                    `http://api.geonames.org/search?name_startsWith=${chaine}&maxRows=10&username=${SEARCH_USER}`
+                    `https://api.geoapify.com/v1/geocode/autocomplete?text=${chaine}&format=json&apiKey=${SEARCH_USER}`
                 );
-                const rawData = xmlToJSON.parseString(await result.text());
-                const data = rawData.geonames[0].geoname;
+
+                const rawData = await result.json();
+
+                const data = rawData.results;
+                // console.log(data);
                 cities = [];
                 data.forEach(elt => {
-                    let city = new City;
-                    city.name = elt.toponymName[0]._text.trim();
-                    city.country = elt.countryName[0]._text;
-                    city.lng = elt.lng[0]._text;
-                    city.lat = elt.lat[0]._text;
-                    cities.push(city);
+                    if (elt.city != undefined) {
+                        let city = new City;
+                        city.formated = elt.formatted;
+                        city.category = elt.category != undefined ? elt.category : 'site';
+                        city.name = elt.city;
+                        city.country = elt.country;
+                        city.lng = elt.lon;
+                        city.lat = elt.lat;
+                        cities.push(city);
+                    }
                 });
+                // console.log(cities);
                 updateSuggest(cities);
             } catch (err) {
                 console.error(err);

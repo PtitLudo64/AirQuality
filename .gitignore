@@ -2,4 +2,5 @@ js/ApiKey.js
 js/SearchUser.js
 .gitignore
 response.txt
+geoapify_resp.json
 citySearch.html

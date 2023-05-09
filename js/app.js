@@ -4,15 +4,16 @@ import API_KEY from "./ApiKey.js";
 const loader = document.querySelector('#loader');
 const emojiLogo = document.querySelector('#emojiLogo');
 const userInfo = document.querySelector('#userInformation');
+const url = document.URL;
 
 
 
-const reqIP = `http://api.airvisual.com/v2/nearest_city?key=${API_KEY}`;
+const reqIP = `//api.airvisual.com/v2/nearest_city?key=${API_KEY}`;
 let reqGPS;
 
 
 const buildReqGPS = (coords) => {
-    reqGPS = `http://api.airvisual.com/v2/nearest_city?lat=${coords[0]}&lon=${coords[1]}&key=${API_KEY}`;
+    reqGPS = `//api.airvisual.com/v2/nearest_city?lat=${coords[0]}&lon=${coords[1]}&key=${API_KEY}`;
     getPollutionData(reqGPS);
 };
 
@@ -43,7 +44,7 @@ const getPollutionData = async (req) => {
     } catch(err) {
         console.error(err);
         loader.classList.remove('active');
-        emojiLogo.src = '../img/networkDown.svg';
+        emojiLogo.src = url+'img/networkDown.svg';
         userInfo.textContent = err.message;
     }
 };
@@ -60,11 +61,11 @@ const temp = document.querySelector('#temperature');
 
 const populateUI = (data) => {
     title.textContent = data.city + ' Air Quality.';
-    emojiLogo.src = `../img/${data.src}.svg`;
+    emojiLogo.src = `${url}img/${data.src}.svg`;
     userInfo.textContent = `Air quality for ${data.city} :`;
     // cityName.textContent = data.city;
     temp.textContent = data.temp;
-    weatherLogo.style.backgroundImage = `url(../img/weatherIcons/${data.icone}.svg)`;
+    weatherLogo.style.backgroundImage = `url(${url}img/weatherIcons/${data.icone}.svg)`;
     pollutionInfo.textContent = data.quality;
     pollutionValue.textContent = data.aqi;
     backgroundLayer.style.backgroundImage = data.background;
