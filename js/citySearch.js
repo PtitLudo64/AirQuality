@@ -30,18 +30,17 @@ const updateSuggest = (data) => {
         }
     });
 
-    suggest.innerHTML = chaine;
+    divSuggest.innerHTML = chaine;
 
-    let suggestCitiesList = suggest.querySelectorAll('.autocomplete');
+    let suggestCitiesList = divSuggest.querySelectorAll('.autocomplete');
     suggestCitiesList.forEach((elt, idx) => elt.addEventListener('click', (e) => {
         document.querySelector('#location').value = data[idx].name + ' (' + data[idx].country +
             ')';
-        suggest.innerHTML = "";
+        divSuggest.innerHTML = "";
         suggestCitiesList = [];
         // résultat 
         coords.push(data[idx].lat, data[idx].lng);
     }))
-
 }
 
 const searchAPI = async (key) => {
@@ -59,7 +58,6 @@ const searchAPI = async (key) => {
                 const rawData = await result.json();
 
                 const data = rawData.results;
-                // console.log(data);
                 cities = [];
                 data.forEach(elt => {
                     if (elt.city != undefined) {
@@ -73,7 +71,6 @@ const searchAPI = async (key) => {
                         cities.push(city);
                     }
                 });
-                // console.log(cities);
                 updateSuggest(cities);
             } catch (err) {
                 console.error(err);
@@ -83,11 +80,10 @@ const searchAPI = async (key) => {
 }
 
 const populateCity = () => {
-    // console.log('PopulateCity : ', coords);
     buildReqGPS(coords);
 };
 
 const searchInput = document.querySelector('#location');
 searchInput.addEventListener('keyup', searchAPI);
 const searchIcon = document.querySelector('#searchEmoji');
-searchIcon.addEventListener('click', populateCity)
+searchIcon.addEventListener('click', populateCity);
